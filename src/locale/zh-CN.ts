@@ -1,3 +1,8 @@
+/*
+ * @Author: Chen.Junior
+ * @LastEditTime: 2022-06-17 17:10:16
+ * @Description:
+ */
 import localeMessageBox from '@/components/message-box/locale/zh-CN';
 import localeLogin from '@/views/login/locale/zh-CN';
 
@@ -19,6 +24,7 @@ export default {
   'menu.user': '个人中心',
   'menu.arcoWebsite': 'Arco Design',
   'menu.faq': '常见问题',
+  'menu.welcome': '欢迎页',
   'navbar.docs': '文档中心',
   'navbar.action.locale': '切换为中文',
   ...localeSettings,

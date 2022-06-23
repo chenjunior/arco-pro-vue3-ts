@@ -1,3 +1,8 @@
+/*
+ * @Author: Chen.Junior
+ * @LastEditTime: 2022-06-20 14:54:14
+ * @Description:
+ */
 import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
@@ -36,4 +41,5 @@ const router = createRouter({
 
 createRouteGuard(router);
 
+// console.log('appRoutes=========', appRoutes);
 export default router;

@@ -1,3 +1,8 @@
+/*
+ * @Author: Chen.Junior
+ * @LastEditTime: 2022-06-20 15:54:26
+ * @Description:
+ */
 import { DEFAULT_LAYOUT } from '@/router/constants';
 
 export default {
@@ -18,6 +23,18 @@ export default {
       meta: {
         locale: 'menu.dashboard.workplace',
         requiresAuth: true,
+        roles: ['*'],
+      },
+    },
+    {
+      path: 'welcome',
+      name: 'welcome',
+      component: () => import('@/views/welcome/index.vue'),
+      meta: {
+        locale: 'menu.welcome',
+        // icon: 'icon-question-circle',
+        requiresAuth: true,
+        order: 1,
         roles: ['*'],
       },
     },
