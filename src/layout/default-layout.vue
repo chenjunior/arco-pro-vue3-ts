@@ -37,9 +37,12 @@
           <a-layout-content>
             <PageLayout />
           </a-layout-content>
-          <Footer v-if="footer" />
         </a-layout>
+        <a-layout-sider class="layout-sider-anchor"
+          ><LayoutSiderAnchor
+        /></a-layout-sider>
       </a-layout>
+      <Footer v-if="footer" />
     </a-layout>
   </a-layout>
 </template>
@@ -55,6 +58,7 @@
   import usePermission from '@/hooks/permission';
   import useResponsive from '@/hooks/responsive';
   import PageLayout from './page-layout.vue';
+  import LayoutSiderAnchor from './layout-sider-anchor.vue';
 
   const appStore = useAppStore();
   const userStore = useUserStore();
@@ -125,6 +129,7 @@
     z-index: 99;
     height: 100%;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+
     &::after {
       position: absolute;
       top: 0;
@@ -145,6 +150,7 @@
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
+
     :deep(.arco-menu) {
       ::-webkit-scrollbar {
         width: 12px;
@@ -152,10 +158,10 @@
       }
 
       ::-webkit-scrollbar-thumb {
-        border: 4px solid transparent;
-        background-clip: padding-box;
-        border-radius: 7px;
         background-color: var(--color-text-4);
+        background-clip: padding-box;
+        border: 4px solid transparent;
+        border-radius: 7px;
       }
 
       ::-webkit-scrollbar-thumb:hover {
@@ -165,9 +171,21 @@
   }
 
   .layout-content {
-    min-height: 100vh;
+    max-width: calc(100vw - 200px);
+    min-height: calc(100vh - 40px);
     overflow-y: hidden;
     background-color: var(--color-fill-2);
     transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  }
+
+  .layout-sider-anchor {
+    position: fixed;
+    top: @nav-size-height;
+    right: 0;
+    z-index: 99;
+    width: 200px;
+    height: 100%;
+    padding: 0 10px 20px 10px;
+    transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   }
 </style>
