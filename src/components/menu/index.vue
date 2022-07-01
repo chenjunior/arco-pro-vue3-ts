@@ -6,6 +6,7 @@
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { openWindow, regexUrl } from '@/utils';
+  import emitter from '@/utils/eventBus';
   import useMenuTree from './useMenuTree';
 
   export default defineComponent({
@@ -42,6 +43,11 @@
           selectedKey.value = [item.name as string];
           return;
         }
+
+        console.log('路由=====', item);
+
+        const { meta } = item;
+        emitter.emit('rounterAnchor', meta);
         // Trigger router change
         router.push({
           name: item.name,

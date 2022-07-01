@@ -38,9 +38,12 @@
             <PageLayout />
           </a-layout-content>
         </a-layout>
-        <a-layout-sider class="layout-sider-anchor"
-          ><LayoutSiderAnchor
-        /></a-layout-sider>
+        <a-layout-sider
+          class="layout-sider-anchor"
+          :class="achorActive ? 'anchor-hidden' : ''"
+        >
+          <LayoutSiderAnchor />
+        </a-layout-sider>
       </a-layout>
       <Footer v-if="footer" />
     </a-layout>
@@ -57,8 +60,15 @@
   import TabBar from '@/components/tab-bar/index.vue';
   import usePermission from '@/hooks/permission';
   import useResponsive from '@/hooks/responsive';
+  import emitter from '@/utils/eventBus';
   import PageLayout from './page-layout.vue';
   import LayoutSiderAnchor from './layout-sider-anchor.vue';
+
+  // 时间总线监听：监听右侧锚点按钮事件
+  const achorActive = ref(false);
+  emitter.once('anchor', (value: boolean) => {
+    achorActive.value = value;
+  });
 
   const appStore = useAppStore();
   const userStore = useUserStore();
@@ -83,7 +93,12 @@
         ? { paddingLeft: `${menuWidth.value}px` }
         : {};
     const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
-    return { ...paddingLeft, ...paddingTop };
+    // const maxWidth = { maxWidth: `calc( 100vw - ${achorWidth.value} )` };
+    const maxWidth = !achorActive.value
+      ? { maxWidth: `calc( 100vw - 200px )` }
+      : { maxWidth: '100vw' };
+
+    return { ...maxWidth, ...paddingLeft, ...paddingTop };
   });
   const setCollapsed = (val: boolean) => {
     appStore.updateSettings({ menuCollapse: val });
@@ -187,5 +202,9 @@
     height: 100%;
     padding: 0 10px 20px 10px;
     transition: all 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  }
+
+  .anchor-hidden {
+    right: -200px;
   }
 </style>

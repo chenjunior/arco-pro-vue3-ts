@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-06-20 15:54:26
+ * @LastEditTime: 2022-07-01 18:20:19
  * @Description:
  */
 import { DEFAULT_LAYOUT } from '@/router/constants';
@@ -27,15 +27,25 @@ export default {
       },
     },
     {
-      path: 'welcome',
-      name: 'welcome',
-      component: () => import('@/views/welcome/index.vue'),
+      path: 'es6',
+      name: 'es6',
+      component: () => import('@/views/es6/index.vue'),
       meta: {
-        locale: 'menu.welcome',
+        locale: 'menu.es6',
         // icon: 'icon-question-circle',
         requiresAuth: true,
         order: 1,
         roles: ['*'],
+        anchorList: [
+          {
+            name: '变量类型',
+            herf: '#variable',
+          },
+          {
+            name: '原型与原型链',
+            herf: '#prototype',
+          },
+        ],
       },
     },
   ],

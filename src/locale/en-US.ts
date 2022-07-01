@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-06-17 17:10:47
+ * @LastEditTime: 2022-06-30 16:12:56
  * @Description:
  */
 import localeMessageBox from '@/components/message-box/locale/en-US';
@@ -24,7 +24,7 @@ export default {
   'menu.user': 'User Center',
   'menu.arcoWebsite': 'Arco Design',
   'menu.faq': 'FAQ',
-  'menu.welcome': 'Welcome',
+  'menu.es6': 'ES6',
   'navbar.docs': 'Docs',
   'navbar.action.locale': 'Switch to English',
   ...localeSettings,

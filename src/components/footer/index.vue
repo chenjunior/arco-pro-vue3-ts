@@ -12,5 +12,6 @@
     height: 40px;
     color: var(--color-text-2);
     text-align: center;
+    background-color: #f0f2f5;
   }
 </style>
