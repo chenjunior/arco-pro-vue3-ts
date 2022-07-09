@@ -1,35 +1,26 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-01 18:20:19
+ * @LastEditTime: 2022-07-09 14:35:17
  * @Description:
  */
 import { DEFAULT_LAYOUT } from '@/router/constants';
 
 export default {
-  path: '/dashboard',
-  name: 'dashboard',
+  path: '/css-html-js-es6',
+  name: 'css-html-js-es6',
   component: DEFAULT_LAYOUT,
+  redirect: '/css-html-js-es6/es6',
   meta: {
     locale: 'menu.dashboard',
     requiresAuth: true,
-    icon: 'icon-dashboard',
+    // icon: 'icon-dashboard',
     order: 0,
   },
   children: [
     {
-      path: 'workplace',
-      name: 'Workplace',
-      component: () => import('@/views/dashboard/workplace/index.vue'),
-      meta: {
-        locale: 'menu.dashboard.workplace',
-        requiresAuth: true,
-        roles: ['*'],
-      },
-    },
-    {
       path: 'es6',
       name: 'es6',
-      component: () => import('@/views/es6/index.vue'),
+      component: () => import('@/views/css-html-js-es6/es6/index.vue'),
       meta: {
         locale: 'menu.es6',
         // icon: 'icon-question-circle',
@@ -42,8 +33,16 @@ export default {
             herf: '#variable',
           },
           {
+            name: '值类型与引用类型',
+            herf: '#value-and-reference',
+          },
+          {
             name: '原型与原型链',
             herf: '#prototype',
+          },
+          {
+            name: '作用域和闭包',
+            herf: '#scope-and-closures',
           },
         ],
       },

@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-06-20 14:54:14
+ * @LastEditTime: 2022-07-04 11:49:40
  * @Description:
  */
 import { createRouter, createWebHistory } from 'vue-router';
@@ -17,15 +17,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'login',
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/login/index.vue'),
-      meta: {
-        requiresAuth: false,
-      },
+      redirect: 'css-html-js-es6',
     },
     ...appRoutes,
     {
@@ -41,5 +33,4 @@ const router = createRouter({
 
 createRouteGuard(router);
 
-// console.log('appRoutes=========', appRoutes);
 export default router;

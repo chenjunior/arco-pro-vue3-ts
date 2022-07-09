@@ -44,8 +44,6 @@
           return;
         }
 
-        console.log('路由=====', item);
-
         const { meta } = item;
         emitter.emit('rounterAnchor', meta);
         // Trigger router change

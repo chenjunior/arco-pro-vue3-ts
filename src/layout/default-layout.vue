@@ -34,7 +34,13 @@
         </a-drawer>
         <a-layout class="layout-content" :style="paddingStyle">
           <TabBar v-if="appStore.tabBar" />
-          <a-layout-content>
+          <a-layout-content
+            :class="
+              achorActive
+                ? 'layout-content-anchor-padding'
+                : 'layout-content-anchor-hidden-padding'
+            "
+          >
             <PageLayout />
           </a-layout-content>
         </a-layout>
@@ -206,5 +212,15 @@
 
   .anchor-hidden {
     right: -200px;
+  }
+
+  .layout-content-anchor-hidden-padding {
+    padding: 20px 84px 20px 64px;
+    background-color: var(--color-bg-1);
+  }
+
+  .layout-content-anchor-padding {
+    padding: 24px 64px;
+    background-color: var(--color-bg-1);
   }
 </style>

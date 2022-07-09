@@ -1,6 +1,6 @@
 <!--
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-01 18:19:34
+ * @LastEditTime: 2022-07-08 14:19:33
  * @Description: 右边侧边栏
 -->
 
@@ -18,12 +18,12 @@
         <icon-right v-else />
       </a-button>
     </div>
-    <a-anchor line-less :offset-top="80">
+    <a-anchor line-less :offset-top="80" :change-hash="false">
       <a-anchor-link
         v-for="(item, index) in anchorList"
         :key="index"
         :href="item.herf"
-        :title="item.name"
+        :title="index + 1 + '，' + item.name"
       ></a-anchor-link>
     </a-anchor>
   </div>
@@ -40,7 +40,6 @@
 
   onMounted(() => {
     anchorList.value = route.meta.anchorList ? route.meta.anchorList : [];
-    console.log('anchorList1========', anchorList.value);
   });
 
   const anchorActive = ref(false);
@@ -51,7 +50,6 @@
 
   emitter.once('rounterAnchor', (meta: any) => {
     anchorList.value = meta.anchorList ? meta.anchorList : [];
-    console.log('anchorList========', anchorList.value, meta);
   });
 </script>
 
