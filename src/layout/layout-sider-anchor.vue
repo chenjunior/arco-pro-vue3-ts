@@ -1,6 +1,6 @@
 <!--
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-08 14:19:33
+ * @LastEditTime: 2022-07-14 10:16:35
  * @Description: 右边侧边栏
 -->
 
@@ -23,8 +23,9 @@
         v-for="(item, index) in anchorList"
         :key="index"
         :href="item.herf"
-        :title="index + 1 + '，' + item.name"
-      ></a-anchor-link>
+        :title="index + 1 + ', ' + item.name"
+      >
+      </a-anchor-link>
     </a-anchor>
   </div>
 </template>

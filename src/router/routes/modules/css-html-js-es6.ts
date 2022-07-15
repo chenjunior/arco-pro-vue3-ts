@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-09 14:35:17
+ * @LastEditTime: 2022-07-13 18:02:25
  * @Description:
  */
 import { DEFAULT_LAYOUT } from '@/router/constants';
@@ -43,6 +43,14 @@ export default {
           {
             name: '作用域和闭包',
             herf: '#scope-and-closures',
+          },
+          {
+            name: '异步和单线程',
+            herf: '#async-and-thread',
+          },
+          {
+            name: 'Set 和 Map',
+            herf: '#set-and-map',
           },
         ],
       },

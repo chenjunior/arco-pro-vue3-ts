@@ -1,6 +1,6 @@
 <!--
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-08 17:20:55
+ * @LastEditTime: 2022-07-15 15:10:41
  * @Description: 变量类型
 -->
 <template>

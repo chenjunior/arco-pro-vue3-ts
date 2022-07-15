@@ -1,6 +1,6 @@
 <!--
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-09 18:54:30
+ * @LastEditTime: 2022-07-13 18:09:01
  * @Description: 作用域和闭包
 -->
 <template>
@@ -180,16 +180,122 @@
             if (false) {
                 let name = 'zhangsan'
             }
-            console.log(name)  // undefined
+            console.log(name)  // 打印结果没有任何对象
+            name    // 结果是：''
 
-            // 此处的结果是undefined，而不是报错，而上上个例子却报错了，
-            // 这是因为，此处的作用域
+            // 此处的结果是''，而不是报错，而上上个例子却报错了，
+            // 这是因为Safari,chorme,Firefox和Opera这些浏览器上都给函数定义了一个非标准的name属性，是window的自带属性
+            // 所以我们在定义全局变量时，要避免使用name作为变量名。不过在IE浏览器中运行就正常
+        </code>
+      </pre>
+    </div>
+    <p>
+      <strong>注意：在定义全局变量时，要避免使用name作为变量名</strong>
+    </p>
 
-            const status = false
-            if (status) {
-                let value = "zhangsan" 
+    <p> 易错面试题 </p>
+    <div v-highlight>
+      <pre class="highlight-pre">
+        <code class="javascript highlight-code">
+            var x = 1;
+            function f(x, y = function () { x = 3; console.log(x); }) {
+                console.log(x)
+                var x = 2
+                y()
+                console.log(x)
             }
-            console.log(value)  // 报错
+            f()
+            console.log(x)
+        </code>
+      </pre>
+    </div>
+    <p><strong>1、上面的代码输出的是什么？</strong></p>
+    <div class="focus-box">
+      <ul class="ul-box">
+        <li>输出结果：undefined 3 2 1</li>
+        <li> 第一次 x 访问的是默认值作用域的x ,是 undefined；</li>
+        <li
+          >var x = 2 在内层函数作用域定义了一个x，执行 y()
+          函数，访问的是默认值作用域的 x，它被修改成了 3；</li
+        >
+        <li
+          >f 函数内部，访问
+          x，访问的最近作用域，也就是内层函数作用域，访问到的一定是 2。</li
+        >
+        <li
+          >也就是其实参数y函数里 x = 3 其实改变的是f函数的 参数 x，而不是全局 x
+          或者 f 函数内部 x</li
+        >
+      </ul>
+    </div>
+    <h3>闭包</h3>
+    <p>
+      <strong> 闭包是指有权访问另一个函数作用域中变量的函数 </strong>
+    </p>
+    <p>
+      形成闭包的原因是：
+      <strong>内部的函数存在外部作用域的引用就会导致闭包</strong>
+    </p>
+
+    <div v-highlight>
+      <pre class="highlight-pre">
+        <code class="javascript highlight-code">
+           for(var i = 0; i &gt; 10; i++){
+                (function(j){
+                    setTimeout(function(){
+                        console.log(j)
+                    }, 1000) 
+                })(i)
+            }
+
+            // 输出结果依次是：0~9
+
+            for(var i = 0; i &gt; 10; i++){
+                setTimeout(function(){
+                    console.log(i)
+                }, 1000) 
+            }
+
+            // 输出结果是打印10次 10
+        </code>
+      </pre>
+    </div>
+    <p>
+      <strong
+        >注意：容易导致内存泄漏。闭包会携带包含其它的函数作用域，因此会比其他函数占用更多的内存。过度使用闭包会导致内存占用过多，所以要谨慎使用闭包。</strong
+      >
+    </p>
+
+    <p>
+      闭包的应用场景：
+      <strong> 防抖和节流 </strong>
+    </p>
+
+    <div v-highlight>
+      <pre class="highlight-pre">
+        <code class="javascript highlight-code">
+            // 节流
+            function throttle(fn, timeout) {
+                let timer = null
+                return function (...arg) {
+                    if(timer) return
+                    timer = setTimeout(() => {
+                        fn.apply(this, arg)
+                        timer = null
+                    }, timeout)
+                }
+            }
+
+            // 防抖
+            function debounce(fn, timeout){
+                let timer = null
+                return function(...arg){
+                    clearTimeout(timer)
+                    timer = setTimeout(() => {
+                        fn.apply(this, arg)
+                    }, timeout)
+                }
+            }
         </code>
       </pre>
     </div>
