@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-04 11:49:40
+ * @LastEditTime: 2022-11-24 18:23:00
  * @Description:
  */
 import { createRouter, createWebHistory } from 'vue-router';
@@ -15,6 +15,11 @@ NProgress.configure({ showSpinner: false }); // NProgress Configuration
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/index.vue'),
+    },
     {
       path: '/',
       redirect: 'css-html-js-es6',
