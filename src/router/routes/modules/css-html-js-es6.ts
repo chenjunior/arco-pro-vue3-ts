@@ -1,6 +1,6 @@
 /*
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-13 18:02:25
+ * @LastEditTime: 2022-11-24 18:23:34
  * @Description:
  */
 import { DEFAULT_LAYOUT } from '@/router/constants';
@@ -51,6 +51,10 @@ export default {
           {
             name: 'Set 和 Map',
             herf: '#set-and-map',
+          },
+          {
+            name: 'Promise',
+            herf: '#promise',
           },
         ],
       },

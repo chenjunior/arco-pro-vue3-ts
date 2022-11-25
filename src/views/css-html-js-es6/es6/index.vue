@@ -1,6 +1,6 @@
 <!--
  * @Author: Chen.Junior
- * @LastEditTime: 2022-07-13 18:09:47
+ * @LastEditTime: 2022-11-24 18:19:47
  * @Description: css-html-js-es6
 -->
 <template>
@@ -24,6 +24,9 @@
     <div id="set-and-map">
       <setAndMapVue></setAndMapVue>
     </div>
+    <div id="promise">
+      <promiseVue></promiseVue>
+    </div>
   </div>
 </template>
 
@@ -34,6 +37,7 @@
   import scopeAndClosuresVue from './components/scopeAndClosures.vue';
   import asyncAndThreadVue from './components/asyncAndThread.vue';
   import setAndMapVue from './components/setAndMap.vue';
+  import promiseVue from './components/promise.vue';
 </script>
 
 <style lang="less" scoped></style>
